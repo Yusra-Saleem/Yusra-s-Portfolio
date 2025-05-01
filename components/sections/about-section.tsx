@@ -1,13 +1,32 @@
 "use client";
 
-import { useState, useEffect ,useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, GraduationCap, Briefcase, Award } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 
+// First, let's define interfaces for our data types
+interface Education {
+  id: number;
+  degree: string;
+  school: string;
+  year: string;
+  description: string;
+  achievements: string[];
+}
 
-const education = [
+interface Experience {
+  id: number;
+  role: string;
+  company: string;
+  year: string;
+  description: string;
+  achievements: string[];
+}
+
+// Update the data arrays with their types
+const education: Education[] = [
   {
     id: 1,
     degree: "Intermediate in Commerce (I.Com)",
@@ -26,7 +45,7 @@ const education = [
   }
 ];
 
-const experience = [
+const experience: Experience[] = [
   {
     id: 1,
     role: "Next.js Developer & Student",
@@ -45,11 +64,10 @@ const experience = [
   }
 ];
 
-
 const AboutSection = () => {
   const [activeTab, setActiveTab] = useState<"education" | "experience">("education");
   const [isVisible, setIsVisible] = useState(false);
-    const sectionRef = useRef(null);
+  const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -150,11 +168,17 @@ const AboutSection = () => {
                     <div className="absolute left-0 top-2 h-4 w-4 rounded-full bg-primary transform -translate-x-1/2" data-aos="fade-up"></div>
                     <div className="bg-card/50 rounded-xl p-6 hover:bg-card/80 transition-colors" data-aos="fade-up">
                       <div className="flex flex-wrap items-center justify-between gap-4 mb-2" data-aos="fade-up">
-                        <h3 className="text-xl font-bold" data-aos="fade-up">{activeTab === "education" ? item.degree : item.role}</h3>
+                        <h3 className="text-xl font-bold" data-aos="fade-up">
+                          {activeTab === "education" 
+                            ? (item as Education).degree 
+                            : (item as Experience).role}
+                        </h3>
                         <span className="text-sm text-muted-foreground" data-aos="fade-up">{item.year}</span>
                       </div>
                       <p className="text-primary font-medium mb-2" data-aos="fade-up">
-                        {activeTab === "education" ? item.school : item.company}
+                        {activeTab === "education" 
+                          ? (item as Education).school 
+                          : (item as Experience).company}
                       </p>
                       <p className="text-muted-foreground mb-4" data-aos="fade-up">{item.description}</p>
                       <ul className="space-y-2">
