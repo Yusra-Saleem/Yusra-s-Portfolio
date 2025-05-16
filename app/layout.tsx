@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] });
 // Removed Hubot_Sans as it is not a valid font
 
 export const metadata: Metadata = {
-  title: 'Yusra#36;s Portfolio',
+  title: "Yusra's Portfolio",
   description: 'Professional developer portfolio showcasing projects and skills',
 };
 
