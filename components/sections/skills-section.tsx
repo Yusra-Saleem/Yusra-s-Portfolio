@@ -27,9 +27,6 @@ const SkillCard = ({ skill, index, isVisible }: {
         transition: { duration: 0.2 }
       }}
       data-aos="fade-up"
-      data-aos-delay={index * 100}
-      data-aos-duration="800"
-      data-aos-once="true"
       className={cn(
         "group relative p-6",
         "bg-gradient-to-br from-background/80 via-background/50 to-background/80",
@@ -80,8 +77,6 @@ const SkillCard = ({ skill, index, isVisible }: {
           )}
           whileHover={{ scale: 1.1 }}
           transition={{ type: "spring", stiffness: 300 }}
-          data-aos="zoom-in"
-          data-aos-delay={index * 100 + 200}
         >
           <Icon className="w-12 h-12 relative z-10" />
         </motion.div>
@@ -93,8 +88,6 @@ const SkillCard = ({ skill, index, isVisible }: {
             "transition-colors duration-300",
             "group-hover:text-primary"
           )}
-          data-aos="fade-up"
-          data-aos-delay={index * 100 + 300}
         >
           {skill.name}
         </motion.h3>
@@ -110,12 +103,10 @@ const SkillCard = ({ skill, index, isVisible }: {
               opacity: 1,
               transition: {
                 staggerChildren: 0.1,
-                delayChildren: index * 0.1 + 0.3
+                delayChildren: 0.3
               }
             }
           }}
-          data-aos="fade-up"
-          data-aos-delay={index * 100 + 400}
         >
           {skill.details.map((detail, idx) => (
             <motion.p
@@ -125,8 +116,6 @@ const SkillCard = ({ skill, index, isVisible }: {
                 hidden: { opacity: 0, x: -10 },
                 visible: { opacity: 1, x: 0 }
               }}
-              data-aos="fade-left"
-              data-aos-delay={index * 100 + 500 + (idx * 100)}
             >
               {detail}
             </motion.p>
@@ -182,7 +171,6 @@ const SkillsSection = () => {
             <span className="relative z-10">Technical</span>{" "}
             <span className="text-primary relative">
               Expertise
-              
             </span>
           </motion.h2>
           <motion.div 
@@ -247,8 +235,6 @@ const SkillsSection = () => {
             layout
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
             data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-delay="800"
           >
             {filteredSkills.map((skill, index) => (
               <SkillCard

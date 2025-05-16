@@ -97,29 +97,29 @@ const AboutSection = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* About Me Content */}
             <div className="stagger-animate-in" data-aos="fade-up">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up">
-                About <span className="text-primary" data-aos="fade-up">Me</span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                About <span className="text-primary">Me</span>
               </h2>
           
-              <div className="prose prose-lg dark:prose-invert mb-8" data-aos="fade-up">
-                <p className="text-muted-foreground leading-relaxed" data-aos="fade-up">
+              <div className="prose prose-lg dark:prose-invert mb-8">
+                <p className="text-muted-foreground leading-relaxed">
                 I'm a web developer with a strong focus on creating user-friendly websites. I started my journey with an interest in technology, and now I specialize in building responsive, full-stack websites using modern tools.
                 </p>
-                <p className="text-muted-foreground leading-relaxed" data-aos="fade-up">
+                <p className="text-muted-foreground leading-relaxed">
                 I work with HTML, CSS, JavaScript, TypeScript, Python and Next.js to build scalable solutions. My current interest is in Agentic AI, where I explore how AI can be integrated into web development to improve user experiences.
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-4 mb-8">
-                <div className="flex items-center gap-2 bg-secondary/50 px-4 py-2 rounded-full" data-aos="fade-up">
+              <div className="flex flex-wrap gap-4 mb-8" data-aos="fade-up">
+                <div className="flex items-center gap-2 bg-secondary/50 px-4 py-2 rounded-full">
                   <Award className="h-5 w-5 text-primary" />
                   <span>1+ Years Experience</span>
                 </div>
-                <div className="flex items-center gap-2 bg-secondary/50 px-4 py-2 rounded-full" data-aos="fade-up">
+                <div className="flex items-center gap-2 bg-secondary/50 px-4 py-2 rounded-full">
                   <Briefcase className="h-5 w-5 text-primary" />
                   <span>35+ Projects Completed</span>
                 </div>
-                <div className="flex items-center gap-2 bg-secondary/50 px-4 py-2 rounded-full" data-aos="fade-up">
+                <div className="flex items-center gap-2 bg-secondary/50 px-4 py-2 rounded-full">
                   <GraduationCap className="h-5 w-5 text-primary" />
                   <span>4+ Certifications in IT</span>
                 </div>
@@ -133,7 +133,7 @@ const AboutSection = () => {
 
             {/* Timeline Section */}
             <div className="bg-card/30 backdrop-blur-sm rounded-2xl p-8 border border-border/50" data-aos="fade-up">
-              <div className="flex gap-4 mb-8" data-aos="fade-up">
+              <div className="flex gap-4 mb-8">
                 <Button
                   variant={activeTab === "education" ? "default" : "outline"}
                   onClick={() => setActiveTab("education")}
@@ -165,26 +165,26 @@ const AboutSection = () => {
                     )}
                     data-aos="fade-up"
                   >
-                    <div className="absolute left-0 top-2 h-4 w-4 rounded-full bg-primary transform -translate-x-1/2" data-aos="fade-up"></div>
-                    <div className="bg-card/50 rounded-xl p-6 hover:bg-card/80 transition-colors" data-aos="fade-up">
-                      <div className="flex flex-wrap items-center justify-between gap-4 mb-2" data-aos="fade-up">
-                        <h3 className="text-xl font-bold" data-aos="fade-up">
+                    <div className="absolute left-0 top-2 h-4 w-4 rounded-full bg-primary transform -translate-x-1/2"></div>
+                    <div className="bg-card/50 rounded-xl p-6 hover:bg-card/80 transition-colors">
+                      <div className="flex flex-wrap items-center justify-between gap-4 mb-2">
+                        <h3 className="text-xl font-bold">
                           {activeTab === "education" 
                             ? (item as Education).degree 
                             : (item as Experience).role}
                         </h3>
-                        <span className="text-sm text-muted-foreground" data-aos="fade-up">{item.year}</span>
+                        <span className="text-sm text-muted-foreground">{item.year}</span>
                       </div>
-                      <p className="text-primary font-medium mb-2" data-aos="fade-up">
+                      <p className="text-primary font-medium mb-2">
                         {activeTab === "education" 
                           ? (item as Education).school 
                           : (item as Experience).company}
                       </p>
-                      <p className="text-muted-foreground mb-4" data-aos="fade-up">{item.description}</p>
+                      <p className="text-muted-foreground mb-4">{item.description}</p>
                       <ul className="space-y-2">
                         {item.achievements.map((achievement, i) => (
-                          <li key={i} className="flex items-center gap-2" data-aos="fade-up">
-                            <div className="h-1.5 w-1.5 rounded-full bg-primary" data-aos="fade-up"></div>
+                          <li key={i} className="flex items-center gap-2">
+                            <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
                             <span className="text-sm">{achievement}</span>
                           </li>
                         ))}

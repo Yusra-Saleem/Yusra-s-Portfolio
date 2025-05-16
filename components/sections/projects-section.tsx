@@ -168,52 +168,45 @@ const ProjectsSection = () => {
 
       {/* Project Details Dialog */}
       <Dialog open={selectedProject !== null} onOpenChange={() => setSelectedProject(null)}>
-        <DialogContent className="sm:max-w-4xl max-w-full p-4 border-primary">
+        <DialogContent className="w-[95vw] sm:w-[90vw] md:max-w-3xl p-0 border-primary h-auto overflow-hidden">
           {currentProject && (
-            <div className="relative">
+            <div className="relative p-2 xs:p-3 sm:p-4">
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition-colors"
-                data-aos="fade"
+                className="absolute top-1 right-1 xs:top-2 xs:right-2 sm:top-3 sm:right-3 z-20 bg-background/80 backdrop-blur-sm rounded-full p-1"
               >
-                <X className="h-6 w-6" />
+                <X className="h-4 w-4 xs:h-5 xs:w-5" />
               </button>
 
               <div 
-                className="aspect-video overflow-hidden rounded-lg mb-4"
-                data-aos="zoom-in"
+                className="w-full h-[28vh] xs:h-[30vh] sm:h-[35vh] md:h-[40vh] relative rounded overflow-hidden mb-2 xs:mb-3"
               >
                 <img
                   src={currentProject.image}
                   alt={currentProject.title}
-                  className="object-cover w-full h-full"
-                  data-aos="fade-in"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-1 xs:space-y-2 sm:space-y-3">
                 <h2 
-                  className="text-xl sm:text-2xl font-bold"
-                  data-aos="fade-up"
+                  className="text-base xs:text-lg sm:text-xl md:text-2xl font-bold"
                 >
                   {currentProject.title}
                 </h2>
                 <p 
-                  className="text-muted-foreground text-sm sm:text-base"
-                  data-aos="fade-up"
+                  className="text-2xs xs:text-xs sm:text-sm md:text-base text-muted-foreground"
                 >
                   {currentProject.description}
                 </p>
 
-                <div data-aos="fade-up">
-                  <h3 className="font-semibold mb-2" data-aos="fade-up">Technologies Used</h3>
-                  <div className="flex flex-wrap gap-2">
+                <div>
+                  <h3 className="font-semibold text-xs xs:text-sm sm:text-base mb-2 xs:mb-2 sm:mb-2">Technologies Used</h3>
+                  <div className="flex flex-wrap gap-2 xs:gap-2 sm:gap-2">
                     {currentProject.technologies.map((tech, index) => (
                       <span 
                         key={index}
-                        className="px-3 py-1 bg-secondary/50 text-sm rounded-full"
-                        data-aos="fade-up"
-                        data-aos-delay={index * 50}
+                        className="px-1.5 xs:px-2 sm:px-3 py-0.5 bg-secondary/50 text-2xs xs:text-xs sm:text-sm rounded-full"
                       >
                         {tech}
                       </span>
@@ -222,27 +215,26 @@ const ProjectsSection = () => {
                 </div>
 
                 <div 
-                  className="flex flex-col sm:flex-row gap-4 mt-6"
-                  data-aos="fade-up"
+                  className="flex flex-row gap-2 xs:gap-3 sm:gap-4 mt-4 xs:mt-4 sm:mt-4"
                 >
-                  <Button asChild className="flex-1" data-aos="fade-up">
+                  <Button asChild size="sm" className="flex-1 h-7 xs:h-8 sm:h-9 text-2xs xs:text-xs sm:text-sm">
                     <a 
                       href={currentProject.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      View Live Site
-                      <ExternalLink className="ml-2 h-4 w-4" />
+                      View Live
+                      <ExternalLink className="ml-1 h-2.5 w-2.5 xs:h-3 xs:w-3 sm:h-4 sm:w-4" />
                     </a>
                   </Button>
-                  <Button variant="outline" asChild className="flex-1" data-aos="fade-up">
+                  <Button variant="outline" size="sm" asChild className="flex-1 h-7 xs:h-8 sm:h-9 text-2xs xs:text-xs sm:text-sm">
                     <a 
                       href={currentProject.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      View Source Code
-                      <Github className="ml-2 h-4 w-4" />
+                      Source Code
+                      <Github className="ml-1 h-2.5 w-2.5 xs:h-3 xs:w-3 sm:h-4 sm:w-4" />
                     </a>
                   </Button>
                 </div>

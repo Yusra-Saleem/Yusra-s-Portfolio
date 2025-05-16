@@ -16,10 +16,10 @@ const Footer = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-background/0 to-background/80 pointer-events-none" />
       
       <div className="container mx-auto px-4 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 md:gap-6 lg:gap-8 xl:gap-12 mb-12">
           {/* Brand Section */}
-          <div>
-            <Link href="/" className="flex items-center gap-2 mb-6">
+          <div className="max-w-md">
+            <Link href="/" className="flex items-center gap-2 mb-4 md:mb-6">
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 className="text-2xl font-bold tracking-tight "
@@ -29,10 +29,10 @@ const Footer = () => {
           
               </motion.div>
             </Link>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-muted-foreground mb-4 md:mb-6 text-sm md:text-base">
             Creating websites that work beautifully and leave a mark. Let's build something amazing together.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-3 md:space-x-4">
               {[
                 { icon: Github, href: "https://github.com/Yusra-Saleem", label: "GitHub" },
                 { icon: Linkedin, href: "https://www.linkedin.com/in/yusrasaleem-developer", label: "LinkedIn" },
@@ -65,8 +65,8 @@ const Footer = () => {
           </div>
           
           {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+          <div className="md:ml-auto md:mr-0">
+            <h3 className="text-lg font-semibold mb-3 md:mb-4">Quick Links</h3>
             <nav className="space-y-3">
               {[
                 { name: "Home", href: "#home" },
@@ -92,8 +92,8 @@ const Footer = () => {
           </div>
           
           {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
+          <div className="md:ml-auto md:mr-0">
+            <h3 className="text-lg font-semibold mb-3 md:mb-4">Contact</h3>
             <div className="space-y-3">
               <p className="text-muted-foreground">
                 Karachi, Pakistan
@@ -111,18 +111,18 @@ const Footer = () => {
           </div>
           
           {/* Newsletter */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Stay Updated</h3>
-            <p className="text-muted-foreground mb-4">
+          <div className="md:ml-auto md:mr-0">
+            <h3 className="text-lg font-semibold mb-3 md:mb-4">Stay Updated</h3>
+            <p className="text-muted-foreground mb-3 md:mb-4 text-sm md:text-base">
               Subscribe to my newsletter for the latest updates and insights.
             </p>
             <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-2 py-2 rounded-lg bg-secondary/50 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="flex-1 px-2 py-1.5 md:py-2 rounded-lg bg-secondary/50 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm"
               />
-              <Button   className="flex-1 px-2 py-2 ">
+              <Button size="sm" className="text-sm px-2 py-0">
                 Subscribe
               </Button>
             </form>
