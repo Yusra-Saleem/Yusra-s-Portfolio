@@ -7,7 +7,7 @@ export const projects: Project[] = [
     id: 1,
     title: "Full-Stack E-Commerce Platform",
     description: "A modern e-commerce platform built with Next.js, featuring product search, filtering, authentication , shipment process, cart management, and secure payment processing.",
-    image: "/projects/project-1.png",
+    image: "/projects/project-1.webp",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe", "Clerk" , "etc"],
     details: [
       "Implemented secure payment processing with Stripe",
@@ -23,7 +23,7 @@ export const projects: Project[] = [
     id: 2,
     title: "Agentia World Website",
     description: "A professional website designed for a global AI-based agency, showcasing services, projects, and core values with an elegant UI.",
-    image: "/projects/project-2.png",
+    image: "/projects/project-2.webp",
     technologies: ["Next.js", "Tailwind CSS", "TypeScript" , "CSS" , "Vercel"],
     details: [
       "Developed a fully responsive and modern UI using Next.js and Tailwind CSS",
@@ -38,7 +38,7 @@ export const projects: Project[] = [
     id: 3,
     title: "Areva Hotel Booking Website",
     description: "A modern hotel booking platform for Areva Hotel, offering an intuitive interface to explore rooms, check availability, and make reservations seamlessly.",
-    image: "/projects/project-3.png",
+    image: "/projects/project-3.webp",
     technologies: ["Next.js", "Tailwind CSS", "TypeScript", "Framer Motion"],
     details: [
       "Developed a fully responsive and elegant layout with Next.js and Tailwind CSS",
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     id: 4,
      title: "Blog Store",
   description: "A sleek and dynamic blog platform where users can explore, read, and comment blog posts across various categories.",
-    image: "/projects/project-4.png",
+    image: "/projects/project-4.webp",
    technologies: ["Next.js", "Tailwind CSS", "TypeScript", "CSS", "Framer Motion"],
   details: [
     "Built a fully responsive blog layout with category-based navigation",
@@ -68,7 +68,7 @@ export const projects: Project[] = [
     id: 5,
     title: "3legant Landing Page",
     description: "A clean and minimalistic landing page UI for a modern furniture and home decor brand, showcasing elegance and functionality in design.",
-    image: "/projects/project-5.png",
+    image: "/projects/project-5.webp",
     technologies: ["Next.js", "Tailwind CSS", "TypeScript", "Framer Motion"],
     details: [
     "Designed a pixel-perfect, responsive UI for a luxury home decor brand",
@@ -83,7 +83,7 @@ export const projects: Project[] = [
     id: 6,
     title: "Luxe Market",
   description: "A sleek and modern e-commerce UI for a boutique-style online store, built to showcase premium products with elegance.",
-    image: "/projects/project-6.png",
+    image: "/projects/project-6.webp",
     technologies: ["Next.js", "Tailwind CSS", "TypeScript", "Framer Motion"],
     details: [
       "Crafted a responsive and minimalistic e-commerce layout",
@@ -91,7 +91,7 @@ export const projects: Project[] = [
       "Included cart interface and product detail views (UI only)",
       "Enhanced visual appeal with transitions and motion effects"
     ],
-    liveUrl: "https://example.com",
+    liveUrl: "https://luxe-market-website.vercel.app",
     githubUrl: "https://github.com/Yusra-Saleem/LuxeMarket-website",
     featured: true
   }

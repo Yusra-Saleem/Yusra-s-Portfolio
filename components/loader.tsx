@@ -6,24 +6,13 @@ import { useEffect, useState } from "react";
 
 const Loader = () => {
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
-    // Ensure loader shows for minimum 7 seconds after page load
+    // Reduced timer to improve perceived performance
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 10000);
+    }, 3000);
 
-    // Listen for page load
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 3000);
-    });
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('load', () => {});
-    };
+    return () => clearTimeout(timer);
   }, []);
 
   if (!isLoading) return null;
@@ -96,12 +85,13 @@ const Loader = () => {
         {/* Image container - maintained aspect ratio */}
         <div className="absolute inset-0 rounded-full animate-border bg-gradient-to-r from-primary via-primary/50 to-primary bg-[length:200%_200%]">
           <div className="absolute inset-1 rounded-full overflow-hidden bg-background/80 backdrop-blur-sm">
-            <Image
-              src="/loader.png"
-              alt="Yusra Saleem"
+            <Image              src="/loader.webp"
+              alt="Yusra Saleem - Frontend Developer"
               fill
               className="object-cover"
               priority
+              loading="eager"
+              sizes="(max-width: 768px) 112px, 160px"
             />
           </div>
         </div>

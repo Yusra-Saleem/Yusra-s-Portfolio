@@ -7,6 +7,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, X } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const ProjectCard = ({ project, onClick }: { 
@@ -29,10 +30,14 @@ const ProjectCard = ({ project, onClick }: {
     >
       {/* Project Image */}
       <div className="aspect-video overflow-hidden">
-        <img
+        <Image
           src={project.image}
-          alt={project.title}
+          alt={project.title + " - Project Preview"}
+          width={640}
+          height={360}
           className="object-cover w-full h-full transition-all duration-700 group-hover:scale-110"
+          loading="lazy"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
@@ -181,10 +186,14 @@ const ProjectsSection = () => {
               <div 
                 className="w-full h-[28vh] xs:h-[30vh] sm:h-[35vh] md:h-[40vh] relative rounded overflow-hidden mb-2 xs:mb-3"
               >
-                <img
+                <Image
                   src={currentProject.image}
-                  alt={currentProject.title}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  alt={`${currentProject.title} - Detailed View`}
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 95vw, (max-width: 1024px) 90vw, 800px"
+                  quality={85}
                 />
               </div>
 

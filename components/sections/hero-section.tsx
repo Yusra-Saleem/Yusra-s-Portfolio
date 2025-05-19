@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Github as GitHub, Linkedin, Twitter, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -31,6 +33,8 @@ const HeroSection = () => {
   return (
     <section 
       id="home" 
+      aria-label="Introduction"
+      role="region"
       className="min-h-screen w-full flex items-center justify-center relative overflow-hidden px-4 pt-32 pb-16 sm:pt-20"
     >
       {/* Particle background */}
@@ -38,6 +42,8 @@ const HeroSection = () => {
         <div
           key={particle.id}
           className="particle absolute"
+          aria-hidden="true"
+          role="presentation"
           style={{
             width: `${particle.size}px`,
             height: `${particle.size}px`,
@@ -73,8 +79,12 @@ const HeroSection = () => {
               with cutting-edge technologies and a focus on user experience.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 justify-center lg:justify-start" data-aos="fade-up" data-aos-delay="400">
-              <Button size="lg" className="rounded-full w-full sm:w-auto text-sm sm:text-base">
-                View My Work <ArrowRight className="ml-2 h-4 w-4" />
+              <Button 
+                size="lg" 
+                className="rounded-full w-full sm:w-auto text-sm sm:text-base"
+                aria-label="View portfolio projects"
+              >
+                View My Work <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </Button>
               <Button variant="outline" size="lg" className="rounded-full w-full sm:w-auto text-sm sm:text-base" asChild>
                 <Link href="#contact">
@@ -128,10 +138,14 @@ const HeroSection = () => {
                 {/* Overlay coding elements */}
                 <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-4 md:p-6 lg:p-8">
                   <div className="glass-effect rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 w-full max-w-[400px] h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] rotate-6 shadow-lg relative overflow-hidden">
-                    <img 
-                      src="/yusras-profile.png" 
-                      alt="Developer at work" 
+                    <Image 
+                      src="/yusras-profile.webp" 
+                      alt="Yusra Saleem working on web development"
+                      fill
+                      priority
                       className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-60"
+                      sizes="(max-width: 768px) 80vw, (max-width: 1200px) 40vw, 500px"
+                      quality={90}
                     />
                     <div className="relative z-10">
                       <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3">
@@ -179,16 +193,25 @@ const HeroSection = () => {
       </div>
       
       {/* Scroll indicator */}
-      <div 
+      <motion.div 
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce hidden sm:block"
         style={{ opacity: Math.max(0, 1 - scrollY / 300) }}
         data-aos="fade-up"
         data-aos-delay="800"
+        aria-label="Scroll down for more content"
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+          }
+        }}
+        onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
       >
         <div className="w-5 h-8 rounded-full border-2 border-foreground flex items-start justify-center p-1">
           <div className="w-1 h-1.5 bg-foreground rounded-full"></div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -66,9 +66,15 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-background relative overflow-hidden">
-      <div className="absolute left-0 top-0 h-full w-1/3 bg-primary/5 -skew-x-12 transform-gpu"
-       
+    <section 
+      id="contact" 
+      className="py-20 bg-background relative overflow-hidden"
+      aria-label="Contact information and form"
+      role="region"
+    >
+      <div 
+        className="absolute left-0 top-0 h-full w-1/3 bg-primary/5 -skew-x-12 transform-gpu"
+        aria-hidden="true"
       />
       
       <div className="container mx-auto px-4 relative z-10">
@@ -95,33 +101,39 @@ const ContactSection = () => {
                   data-aos="fade-up"
                   data-aos-delay="200"
                 >
-                  <div className="bg-secondary/50 p-3 rounded-full">
+                  <div className="bg-secondary/50 p-3 rounded-full" aria-hidden="true">
                     <Mail className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-medium mb-1">Email</h3>
+                    <h3 className="font-medium mb-1" id="email-label">Email</h3>
                     <p className="text-muted-foreground">
-                      <a href="mailto:hello@example.com" className="hover:text-primary transition-colors">
+                      <a 
+                        href="mailto:yusrasaleem679@gmail.com" 
+                        className="hover:text-primary transition-colors"
+                        aria-labelledby="email-label"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigator.clipboard.writeText("yusrasaleem679@gmail.com");
+                          toast.success("Email copied to clipboard!");
+                        }}
+                      >
                         yusrasaleem679@gmail.com
                       </a>
                     </p>
                   </div>
                 </div>
                 
-                
-               
-                
                 <div 
                   className="flex items-start gap-4"
                   data-aos="fade-up"
                   data-aos-delay="400"
                 >
-                  <div className="bg-secondary/50 p-3 rounded-full">
+                  <div className="bg-secondary/50 p-3 rounded-full" aria-hidden="true">
                     <MapPin className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-medium mb-1">Location</h3>
-                    <p className="text-muted-foreground">
+                    <h3 className="font-medium mb-1" id="location-label">Location</h3>
+                    <p className="text-muted-foreground" aria-labelledby="location-label">
                       Karachi, Pakistan
                     </p>
                   </div>
@@ -132,15 +144,17 @@ const ContactSection = () => {
                 className="bg-secondary/20 p-6 rounded-xl border border-border/50"
                 data-aos="fade-up"
                 data-aos-delay="500"
+                role="region"
+                aria-labelledby="available-for"
               >
-                <h3 className="font-medium mb-2">Available for:</h3>
-                <ul className="space-y-2">
+                <h3 className="font-medium mb-2" id="available-for">Available for:</h3>
+                <ul className="space-y-2" role="list">
                   <li 
                     className="flex items-center gap-2"
                     data-aos="fade-left"
                     data-aos-delay="600"
                   >
-                    <Check className="h-4 w-4 text-primary" />
+                    <Check className="h-4 w-4 text-primary" aria-hidden="true" />
                     <span>Website Development</span>
                   </li>
                   <li 
@@ -148,7 +162,7 @@ const ContactSection = () => {
                     data-aos="fade-left"
                     data-aos-delay="700"
                   >
-                    <Check className="h-4 w-4 text-primary" />
+                    <Check className="h-4 w-4 text-primary" aria-hidden="true" />
                     <span>Freelance projects</span>
                   </li>
                   <li 
@@ -156,7 +170,7 @@ const ContactSection = () => {
                     data-aos="fade-left"
                     data-aos-delay="800"
                   >
-                    <Check className="h-4 w-4 text-primary" />
+                    <Check className="h-4 w-4 text-primary" aria-hidden="true" />
                     <span>Consulting</span>
                   </li>
                 </ul>
@@ -177,7 +191,11 @@ const ContactSection = () => {
               </h3>
               
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form 
+                  onSubmit={form.handleSubmit(onSubmit)} 
+                  className="space-y-6"
+                  aria-label="Contact form"
+                >
                   <FormField
                     control={form.control}
                     name="name"
@@ -186,11 +204,18 @@ const ContactSection = () => {
                         data-aos="fade-up"
                         data-aos-delay="200"
                       >
-                        <FormLabel>Name</FormLabel>
+                        <FormLabel htmlFor="name">Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your name" {...field} />
+                          <Input 
+                            id="name"
+                            placeholder="Your name" 
+                            {...field} 
+                            aria-required="true"
+                            aria-invalid={!!form.formState.errors.name}
+                            aria-describedby={form.formState.errors.name ? "name-error" : undefined}
+                          />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage id="name-error" />
                       </FormItem>
                     )}
                   />
@@ -203,11 +228,19 @@ const ContactSection = () => {
                         data-aos="fade-up"
                         data-aos-delay="300"
                       >
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel htmlFor="email">Email</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your email" {...field} />
+                          <Input 
+                            id="email"
+                            type="email"
+                            placeholder="Your email" 
+                            {...field} 
+                            aria-required="true"
+                            aria-invalid={!!form.formState.errors.email}
+                            aria-describedby={form.formState.errors.email ? "email-error" : undefined}
+                          />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage id="email-error" />
                       </FormItem>
                     )}
                   />
@@ -220,15 +253,19 @@ const ContactSection = () => {
                         data-aos="fade-up"
                         data-aos-delay="400"
                       >
-                        <FormLabel>Message</FormLabel>
+                        <FormLabel htmlFor="message">Message</FormLabel>
                         <FormControl>
                           <Textarea 
+                            id="message"
                             placeholder="Your message" 
                             className="min-h-[120px] resize-none" 
                             {...field} 
+                            aria-required="true"
+                            aria-invalid={!!form.formState.errors.message}
+                            aria-describedby={form.formState.errors.message ? "message-error" : undefined}
                           />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage id="message-error" />
                       </FormItem>
                     )}
                   />
@@ -239,6 +276,7 @@ const ContactSection = () => {
                     disabled={isSubmitting}
                     data-aos="fade-up"
                     data-aos-delay="500"
+                    aria-label={isSubmitting ? "Sending message..." : "Send message"}
                   >
                     {isSubmitting ? (
                       <>
