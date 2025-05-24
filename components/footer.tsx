@@ -16,9 +16,9 @@ const Footer = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-background/0 to-background/80 pointer-events-none" />
       
       <div className="container mx-auto px-4 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 md:gap-6 lg:gap-8 xl:gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-y-6 md:gap-6 lg:gap-8 xl:gap-12 mb-12">
           {/* Brand Section */}
-          <div className="max-w-md">
+          <div className="max-w-md mb-8 md:mb-0">
             <Link href="/" className="flex items-center gap-2 mb-4 md:mb-6">
               <motion.div
                 whileHover={{ scale: 1.1 }}
@@ -65,7 +65,7 @@ const Footer = () => {
           </div>
           
           {/* Quick Links */}
-          <div className="md:ml-auto md:mr-0">
+          <div className="md:ml-auto md:mr-0 mb-8 md:mb-0">
             <h3 className="text-lg font-semibold mb-3 md:mb-4">Quick Links</h3>
             <nav className="space-y-3">
               {[
@@ -92,7 +92,7 @@ const Footer = () => {
           </div>
           
           {/* Contact Info */}
-          <div className="md:ml-auto md:mr-0">
+          <div className="md:ml-auto md:mr-0 mb-8 md:mb-0">
             <h3 className="text-lg font-semibold mb-3 md:mb-4">Contact</h3>
             <div className="space-y-3">
               <p className="text-muted-foreground">
@@ -111,12 +111,12 @@ const Footer = () => {
           </div>
           
           {/* Newsletter */}
-          <div className="md:ml-auto md:mr-0">
+          <div className="md:ml-auto md:mr-0 mb-8 md:mb-0">
             <h3 className="text-lg font-semibold mb-3 md:mb-4">Stay Updated</h3>
             <p className="text-muted-foreground mb-3 md:mb-4 text-sm md:text-base">
               Subscribe to my newsletter for the latest updates and insights.
             </p>
-            <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
+            <form className="flex flex-col sm:flex-row gap-2" onSubmit={(e) => e.preventDefault()}>
               <input
                 type="email"
                 placeholder="Enter your email"

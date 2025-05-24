@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, GraduationCap, Briefcase, Award } from "lucide-react";
+import { ArrowRight, GraduationCap, Briefcase, Award, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useDynamicAnimations } from "@/hooks/use-dynamic-animations";
@@ -105,12 +105,12 @@ const AboutSection = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* About Me Content */}
             <div className="stagger-animate-in" data-aos="fade-up">
-              <h2 
+              <h1 
                 className="text-3xl md:text-4xl font-bold mb-6" 
                 ref={el => el && optimizeElement(el, true)}
               >
                 About <span className="text-primary">Me</span>
-              </h2>
+              </h1>
           
               <div className="prose prose-lg dark:prose-invert mb-8">
                 <p className="text-muted-foreground leading-relaxed">
@@ -137,8 +137,8 @@ const AboutSection = () => {
               </div>
 
               <Button className="rounded-full group" data-aos="fade-up" asChild>
-                <a href="/Yusra's Resume.pdf" download>
-                  Download Resume
+                <a href="/Yusra's Resume.pdf" download aria-label="Download Yusra's Resume">
+                  <span className="sr-only">Download Resume</span>
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>
@@ -181,11 +181,11 @@ const AboutSection = () => {
                     <div className="absolute left-0 top-2 h-4 w-4 rounded-full bg-primary transform -translate-x-1/2"></div>
                     <div className="bg-card/50 rounded-xl p-6 hover:bg-card/80 transition-colors">
                       <div className="flex flex-wrap items-center justify-between gap-4 mb-2">
-                        <h3 className="text-xl font-bold">
+                        <h2 className="text-xl font-bold">
                           {activeTab === "education" 
                             ? (item as Education).degree 
                             : (item as Experience).role}
-                        </h3>
+                        </h2>
                         <span className="text-sm text-muted-foreground">{item.year}</span>
                       </div>
                       <p className="text-primary font-medium mb-2">
