@@ -1,34 +1,45 @@
 "use client";
 
-import dynamic from 'next/dynamic';
 import { Suspense, useEffect } from 'react';
 import { usePerformanceMonitoring } from '@/hooks/use-performance-monitoring';
+import { useScrollOptimization } from '@/hooks/use-scroll-optimization';
 
-const Loader = dynamic(() => import("@/components/loader"));
-const HeroSection = dynamic(() => import("@/components/sections/hero-section"));
-const AboutSection = dynamic(() => import("@/components/sections/about-section"));
-const ProjectsSection = dynamic(() => import("@/components/sections/projects-section"));
-const TestimonialsSection = dynamic(() => import("@/components/sections/testimonials-section"));
-const SkillsSection = dynamic(() => import("@/components/sections/skills-section"));
-const ContactSection = dynamic(() => import("@/components/sections/contact-section"));
+import Loader from "@/components/loader";
+import HeroSection from "@/components/sections/hero-section";
+import AboutSection from "@/components/sections/about-section";
+import ProjectsSection from "@/components/sections/projects-section";
+import TestimonialsSection from "@/components/sections/testimonials-section";
+import SkillsSection from "@/components/sections/skills-section";
+import ContactSection from "@/components/sections/contact-section";
 
 export default function Home() {
   usePerformanceMonitoring();
+  useScrollOptimization();
 
   useEffect(() => {
-    // Preload critical assets
-    const preloadLinks = [
-      { rel: 'preload', href: '/yusras-profile.webp', as: 'image' },
-      { rel: 'preload', href: '/loader.webp', as: 'image' },
-    ];
+    // Optimize performance
+    const optimize = () => {
+      // Disable animations on mobile for better performance
+      if (window.innerWidth < 768) {
+        document.documentElement.style.setProperty('--animate-duration', '0s');
+      }
 
-    preloadLinks.forEach(link => {
-      const linkEl = document.createElement('link');
-      Object.entries(link).forEach(([key, value]) => {
-        linkEl.setAttribute(key, value);
-      });
-      document.head.appendChild(linkEl);
-    });
+      // Enable smooth scroll only on desktop
+      document.body.style.scrollBehavior = window.innerWidth > 768 ? 'smooth' : 'auto';
+      
+      // Reduce motion if user prefers
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.style.setProperty('--animate-duration', '0s');
+      }
+    };
+
+    optimize();
+    window.addEventListener('resize', optimize);
+    
+    return () => {
+      window.removeEventListener('resize', optimize);
+      document.body.style.scrollBehavior = 'auto';
+    };
   }, []);
 
   return (
@@ -36,24 +47,14 @@ export default function Home() {
       <Suspense fallback={null}>
         <Loader />
       </Suspense>
-      <Suspense fallback={<div className="h-screen" />}>
+      <div className="overflow-x-hidden">
         <HeroSection />
-      </Suspense>
-      <Suspense fallback={<div className="h-screen" />}>
         <AboutSection />
-      </Suspense>
-      <Suspense fallback={<div className="h-screen" />}>
         <ProjectsSection />
-      </Suspense>
-      <Suspense fallback={<div className="h-screen" />}>
         <SkillsSection />
-      </Suspense>
-      <Suspense fallback={<div className="h-screen" />}>
         <TestimonialsSection />
-      </Suspense>
-      <Suspense fallback={<div className="h-screen" />}>
         <ContactSection />
-      </Suspense>
+      </div>
     </>
   );
 }

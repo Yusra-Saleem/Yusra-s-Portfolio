@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, GraduationCap, Briefcase, Award } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useDynamicAnimations } from "@/hooks/use-dynamic-animations";
+import { optimizeElement } from "@/lib/performance";
 
 // First, let's define interfaces for our data types
 interface Education {
@@ -65,9 +67,17 @@ const experience: Experience[] = [
 ];
 
 const AboutSection = () => {
-  const [activeTab, setActiveTab] = useState<"education" | "experience">("education");
+  const [activeTab, setActiveTab] = useState("education");
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const { shouldAnimate, animation } = useDynamicAnimations();
+  
+  useEffect(() => {
+    if (sectionRef.current) {
+      return optimizeElement(sectionRef.current);
+    }
+  }, []);
+
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -85,19 +95,20 @@ const AboutSection = () => {
 
     return () => observer.disconnect();
   }, []);
-
   return (
-    <section id="about" className="py-20 bg-background relative overflow-hidden bg-subtle-radial">
+    <section id="about" className="py-20 bg-background relative overflow-hidden">
       {/* Background decorations */}
-      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-primary/5 rounded-full filter blur-[100px] transform rotate-12" data-aos="fade"></div>
-      <div className="absolute bottom-0 left-0 w-1/3 h-2/3 bg-primary/10 rounded-full filter blur-[120px] transform -rotate-12" data-aos="fade"></div>
-      
+      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-primary/10 rounded-full filter blur-[100px] transform rotate-12" data-aos="fade" />
+      <div className="absolute bottom-0 left-0 w-1/3 h-2/3 bg-primary/20 rounded-full filter blur-[120px] transform -rotate-12" data-aos="fade" />
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* About Me Content */}
             <div className="stagger-animate-in" data-aos="fade-up">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 
+                className="text-3xl md:text-4xl font-bold mb-6" 
+                ref={el => el && optimizeElement(el, true)}
+              >
                 About <span className="text-primary">Me</span>
               </h2>
           
@@ -125,9 +136,11 @@ const AboutSection = () => {
                 </div>
               </div>
 
-              <Button className="rounded-full group" data-aos="fade-up">
-                Download Resume
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <Button className="rounded-full group" data-aos="fade-up" asChild>
+                <a href="/Yusra's Resume.pdf" download>
+                  Download Resume
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
               </Button>
             </div>
 

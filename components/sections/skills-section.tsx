@@ -155,34 +155,26 @@ const SkillsSection = () => {
 
       <div className="container relative z-10 mx-auto px-4">
         {/* Section header with enhanced glow */}
-        <motion.div 
-          className="max-w-3xl mx-auto text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          data-aos="fade-down"
-          data-aos-duration="1000"
-        >
-          <motion.h2 
-            className="text-4xl font-bold mb-4 relative"
-            data-aos="fade-up"
-            data-aos-duration="800"
+        <div className="text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
           >
-            <span className="relative z-10">Technical</span>{" "}
-            <span className="text-primary relative">
-              Expertise
-            </span>
-          </motion.h2>
-          <motion.div 
-            className="h-1 w-20 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full mb-6"
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 80 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            data-aos="zoom-in"
-            data-aos-duration="1000"
-            data-aos-delay="200"
-          />
-        </motion.div>
+            <h2 className="text-4xl font-bold mb-4 relative">
+              <span className="relative z-10">Technical</span>{" "}
+              <span className="text-primary relative">
+                Expertise
+              </span>
+            </h2>
+            <motion.div 
+              className="h-1 w-20 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full mb-6"
+              initial={{ width: 0, opacity: 0 }}
+              animate={isInView ? { width: 80, opacity: 1 } : {}}
+              transition={{ duration: 0.5 }}
+            />
+          </motion.div>
+        </div>
 
         {/* Category filters with glow effect */}
         <motion.div 

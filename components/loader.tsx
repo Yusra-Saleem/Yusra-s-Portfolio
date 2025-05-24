@@ -5,12 +5,11 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const Loader = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    // Reduced timer to improve perceived performance
+  const [isLoading, setIsLoading] = useState(true);  useEffect(() => {
+    // Setting a longer timer for better animation visibility
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 7000);
 
     return () => clearTimeout(timer);
   }, []);
